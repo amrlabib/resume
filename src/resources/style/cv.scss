@@ -1,0 +1,261 @@
+$light-blue: #80bed6;
+$dark-blue:#097cac;
+h1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+//this padding is increased because of the negative dotted lines and circles of the left timelines to show in save as pdf
+.container {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+section.header {
+    display: inline-block;
+    height: 50px;
+    width: 100%;
+    background-color: $light-blue;
+    color: white;
+    margin-top: 50px;
+    position: relative;
+    &:before {
+        content: "";
+        position: absolute;
+        left: 2%;
+        top: 0px;
+        display: inline-block;
+        width: 20px;
+        height: 100%;
+        background-color: white;
+    }
+    h1 {
+        display: inline-block;
+        line-height: 50px;
+        margin-left: 5%;
+        text-transform: uppercase;
+    }
+}
+
+section.personal-information {
+    padding: 50px 0;
+    .name {
+        display: inline-block;
+        width: 100%;
+        h1 {
+            display: block;
+            font-family: "Aller-Bold";
+            font-size: 40px;
+        }
+        h2 {
+            display: block;
+            font-family: "Aller-Light";
+            font-size: 30px;
+            color: $dark-blue;
+        }
+    }
+    .contact {
+        .mobile,
+        .email {
+            display: inline-block;
+            width: 100%;
+            padding-left: 60px;
+            position: relative;
+            margin-top: 15px;
+            &:first-child {
+                margin-top: 0px;
+            }
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0px;
+                top: 50%;
+                transform: translate3d(0, -50%, 0);
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background-size: cover;
+            }
+            .head {
+                display: block;
+                font-size: 20px;
+                color: $dark-blue;
+            }
+            .text {
+                display: block;
+                font-size: 20px;
+                color: black;
+            }
+        }
+        .mobile:before {
+            background-image: url("../images/phone.svg");
+        }
+        .email:before {
+            background-image: url("../images/email.svg");
+        }
+    }
+}
+
+section.experience {
+    .employment,
+    .education {
+        .positions {
+            display: block;
+            .position {
+                display: inline-block;
+                width: 100%;
+                height: auto;
+                padding: 15px 0;
+                position: relative;
+                &:last-of-type {
+                    padding-bottom: 0px;
+                }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: -20px;
+                    top: 18px;
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    background-color: white;
+                    border: solid 1px $dark-blue;
+                    border-radius: 50%;
+                }
+                time {
+                    display: inline-block;
+                    width: 24%;
+                    vertical-align: top;
+                }
+                .wrapper {
+                    display: inline-block;
+                    width: 75%;
+                    .company,
+                    .role,
+                    .description,
+                    .school,
+                    .certificate {
+                        display: block;
+                    }
+                    .company,
+                    .certificate {
+                        margin: 0px;
+                        color: $dark-blue;
+                    }
+                    .role {
+                        color: black;
+                        font-family: "Aller-Bold";
+                    }
+                }
+            }
+        }
+    }
+    .professional-skills,
+    .personal-skills {
+        .skills {
+            .skill {
+                display: block;
+                margin-top: 5px;
+                .title {
+                    display: inline-block;
+                    width: 49%;
+                }
+                .rate {
+                    display: inline-block;
+                    width: 49%;
+                    text-align: right;
+                    span {
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        background-color: $dark-blue;
+                        &.light {
+                            background-color: $light-blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .projects {
+        h4 {
+            display: block;
+            color: $dark-blue;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0px;
+            a {
+                display: block;
+                margin-top: 5px;
+                text-decoration: none;
+                color: black;
+                padding-left: 30px;
+                position: relative;
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    left: 0px;
+                    top: 50%;
+                    transform: translate3d(-30%, -30%, 0);
+                    background-size: cover;
+                    background-position: center;
+                    background-image: url("../images/link.svg");
+                }
+            }
+        }
+    }
+}
+
+h3.header {
+    display: inline-block;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: solid 1px gray;
+    position: relative;
+    text-transform: uppercase;
+    &:before {
+        content: "+";
+        color: $dark-blue;
+        position: absolute;
+        left: -15px;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        font-size: 35px;
+    }
+    &:after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 0px;
+        bottom: -1px;
+        width: 10%;
+        height: 1px;
+        background-color: black;
+    }
+}
+
+div.left-timeline {
+    position: relative;
+    &:before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 0px;
+        border-left: dotted 1px black;
+        position: absolute;
+        left: -14px;
+    }
+}
+
+footer {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    margin-top: 100px;
+    background-color: $light-blue;
+}
