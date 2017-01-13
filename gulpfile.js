@@ -5,6 +5,7 @@ var cleanCss = require('gulp-clean-css');
 var jsMinify = require('gulp-minify');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
+var autoprefixer = require('gulp-autoprefixer');
 
 
 //change source to what ever technology used for the application (Angular , React , ... etc )
@@ -17,6 +18,10 @@ var paths = {
     images: {
         src: 'src/resources/images/**/*',
         dist: 'dist/resources/images'
+    },
+    favicons: {
+        src: 'src/resources/images/favicon/*',
+        dist: 'dist/favicon/'
     },
     style: {
         src: 'src/resources/style/**/*.scss',
@@ -32,6 +37,11 @@ var paths = {
     }
 };
 
+//Copy all favicons
+gulp.task('copyFavicons', function() {
+    return gulp.src(paths.favicons.src)
+        .pipe(gulp.dest(paths.favicons.dist));
+});
 
 //Copy all html files and views
 gulp.task('copyHtmlFiles', function() {
@@ -58,6 +68,10 @@ gulp.task('compileSass', function() {
     return gulp.src(paths.style.src)
         .pipe(sass())
         .pipe(cleanCss())
+        .pipe(autoprefixer({
+            browsers: ['last 5 versions'],
+            cascade: false
+        }))
         .pipe(gulp.dest(paths.style.dist));
 });
 
@@ -65,7 +79,6 @@ gulp.task('compileSass', function() {
 //Concat all javascript files in one single file named main.js and minify it.
 gulp.task('scripts', function() {
     return gulp.src([
-            './node_modules/hammerjs/hammer.min.js',
             paths.js.src
         ])
         .pipe(concat('main.js'))
@@ -93,4 +106,4 @@ gulp.task('static-server-and-watch', function() {
 
 
 //last 2 tasks should be added only if we have node server not only static server
-gulp.task('default', [ 'fonts' , 'scripts', 'copyHtmlFiles', 'images', 'compileSass', 'static-server-and-watch']);
+gulp.task('default', ['fonts', 'scripts', 'copyHtmlFiles', 'images',  'copyFavicons' , 'compileSass', 'static-server-and-watch']);

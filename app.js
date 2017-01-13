@@ -26,6 +26,7 @@ app.use(function(req, res, next) {
 
 //express middlewares
 app.use('/resources', express.static(__dirname + '/dist/resources'));
+app.use('/favicon', express.static(__dirname + '/dist/favicon'));
 
 
 

@@ -15,9 +15,9 @@ section.header {
     display: inline-block;
     height: 50px;
     width: 100%;
-    background-color: $light-blue;
+    background-color: $dark-blue;
     color: white;
-    margin-top: 50px;
+    margin-top: 35px;
     position: relative;
     &:before {
         content: "";
@@ -34,11 +34,14 @@ section.header {
         line-height: 50px;
         margin-left: 5%;
         text-transform: uppercase;
+        @media (max-width: 768px) {
+            margin-left: 10%;
+        }
     }
 }
 
 section.personal-information {
-    padding: 50px 0;
+    padding: 50px 0 40px;
     .name {
         display: inline-block;
         width: 100%;
@@ -61,7 +64,7 @@ section.personal-information {
             width: 100%;
             padding-left: 60px;
             position: relative;
-            margin-top: 15px;
+            margin-top: 10px;
             &:first-child {
                 margin-top: 0px;
             }
@@ -78,13 +81,17 @@ section.personal-information {
             }
             .head {
                 display: block;
-                font-size: 20px;
+                font-size: 18px;
                 color: $dark-blue;
             }
             .text {
                 display: block;
-                font-size: 20px;
+                font-size: 18px;
                 color: black;
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
             }
         }
         .mobile:before {
@@ -92,6 +99,37 @@ section.personal-information {
         }
         .email:before {
             background-image: url("../images/email.svg");
+        }
+        .links {
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+            span {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background-size: cover;
+                background-position: center;
+                margin-left: 40px;
+                border-radius: 50%;
+                a {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
+                &:first-child {
+                    margin-left: 0px;
+                }
+                &.linkedin {
+                    background-image: url("../images/linkedin.svg");
+                }
+                &.github {
+                    background-image: url("../images/github.svg");
+                }
+                &.codepen {
+                    background-image: url("../images/codepen.svg");
+                }
+            }
         }
     }
 }
@@ -129,7 +167,7 @@ section.experience {
                 }
                 .wrapper {
                     display: inline-block;
-                    width: 75%;
+                    width: 74%;
                     .company,
                     .role,
                     .description,
@@ -142,6 +180,13 @@ section.experience {
                         margin: 0px;
                         color: $dark-blue;
                     }
+                    .company,
+                    .certificate {
+                        margin-bottom: 5px;
+                    }
+                    .description {
+                        margin: 0px;
+                    }
                     .role {
                         color: black;
                         font-family: "Aller-Bold";
@@ -153,6 +198,19 @@ section.experience {
     .professional-skills,
     .personal-skills {
         .skills {
+            .skill-grade {
+                display: block;
+                text-align: right;
+                span {
+                    display: inline-block;
+                    font-size: 11px;
+                    margin-left: 5px;
+                    font-family: "Aller-Regular";
+                    &:first-child {
+                        margin-left: 0px;
+                    }
+                }
+            }
             .skill {
                 display: block;
                 margin-top: 5px;
@@ -257,5 +315,23 @@ footer {
     width: 100%;
     height: 40px;
     margin-top: 100px;
-    background-color: $light-blue;
+    background-color: $dark-blue;
+    @media (max-width: 768px) {
+        margin-top: 50px;
+    }
+}
+
+@media print {
+    footer {
+        margin-top: 100px;
+    }
+    .print-6 {
+        width: 50%;
+    }
+    .print-5 {
+        width: 41.66667%;
+    }
+    .print-offset-1 {
+        margin-left: 8.33333%;
+    }
 }
