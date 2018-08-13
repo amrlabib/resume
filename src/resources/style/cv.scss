@@ -7,7 +7,7 @@ h1 {
 
 //this padding is increased because of the negative dotted lines and circles of the left timelines to show in save as pdf
 .container {
-    padding-right: 30px;
+    padding-right: 60px;
     padding-left: 30px;
 }
 
@@ -41,7 +41,7 @@ section.header {
 }
 
 section.personal-information {
-    padding: 50px 0 40px;
+    padding: 35px 0 20px;
     .name {
         display: inline-block;
         width: 100%;
@@ -125,6 +125,10 @@ section.personal-information {
                 }
                 &.github {
                     background-image: url("../images/github.svg");
+                }
+                &.stackoverflow {
+                    background-image: url("../images/stackoverflow.svg");
+                    border-radius: 0;
                 }
                 &.codepen {
                     background-image: url("../images/codepen.svg");
