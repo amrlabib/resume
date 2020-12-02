@@ -2,6 +2,10 @@
   "name": "cv",
   "version": "1.0.0",
   "description": "Amr's cv",
+  "scripts": {
+    "start": "node app.js",
+    "build:dev": "webpack --config webpack.config.js && webpack serve"
+  },
   "keywords": [
     "CV",
     "Amr",
@@ -18,17 +22,16 @@
     "express-session": "^1.14.1"
   },
   "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
-    "browser-sync": "^2.18.1",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-clean-css": "^2.0.13",
-    "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-minify": "0.0.14",
-    "gulp-sass": "^2.3.2"
-  },
-  "scripts": {
-    "start": "node app.js"
+    "bootstrap-sass": "^3.4.1",
+    "copy-webpack-plugin": "^6.3.2",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "svg-url-loader": "^7.1.1",
+    "webpack": "^5.9.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }
