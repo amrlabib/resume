@@ -13,20 +13,20 @@ app.use(function(req, res, next) {
 
     next();
 });
-app.use('/resources', express.static(__dirname + '/dist/resources'));
-app.use('/favicon', express.static(__dirname + '/dist/favicon'));
-app.use('/fonts', express.static(__dirname + '/dist/fonts'));
+app.use('/resources', express.static(__dirname + '/docs/resources'));
+app.use('/favicon', express.static(__dirname + '/docs/favicon'));
+app.use('/fonts', express.static(__dirname + '/docs/fonts'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 
 // routes
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/dist/" + "index.html");
+    res.sendFile(__dirname + "/docs/" + "index.html");
 });
 
 app.get('/index.js', (req, res) => {
-    res.sendFile(__dirname + "/dist/" + "index.js");
+    res.sendFile(__dirname + "/docs/" + "index.js");
 });
 
 app.listen( process.env.PORT || 5000, () => {
