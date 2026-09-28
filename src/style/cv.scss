@@ -109,6 +109,9 @@ ul, ol {
         margin-top: 14px;
         font-size: 15px;
         max-width: 620px;
+        a {
+            white-space: nowrap;
+        }
     }
 }
 
@@ -201,8 +204,11 @@ main > section + section {
 
 .link-groups {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 3fr 2fr;
     gap: 24px;
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
 }
 
 // ---- Entries (experience / education) ----
@@ -341,6 +347,17 @@ main > section + section {
         &:hover {
             color: var(--color-accent);
         }
+    }
+    .stat {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--color-accent);
+        background: var(--color-accent-tint);
+        border-radius: 999px;
+        padding: 2px 8px;
+        white-space: nowrap;
+        margin: 4px 6px 0 0;
     }
 }
 
