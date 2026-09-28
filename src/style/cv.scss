@@ -1,341 +1,368 @@
-$light-blue: #80bed6;
-$dark-blue:#097cac;
-h1 {
-    margin: 0px;
-    padding: 0px;
+:root {
+    --color-bg: #ffffff;
+    --color-surface: #f5f7fa;
+    --color-text: #1a1d23;
+    --color-text-muted: #667085;
+    --color-accent: #1d5fa8;
+    --color-accent-tint: #eaf1fa;
+    --color-border: #e2e5ea;
+    --max-width: 980px;
 }
 
-//this padding is increased because of the negative dotted lines and circles of the left timelines to show in save as pdf
-.container {
-    padding-right: 60px;
-    padding-left: 30px;
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --color-bg: #14171c;
+        --color-surface: #1c2026;
+        --color-text: #eef0f3;
+        --color-text-muted: #9aa2ad;
+        --color-accent: #6ba6e0;
+        --color-accent-tint: #1e2c3a;
+        --color-border: #2a2f37;
+    }
 }
 
-section.header {
-    display: inline-block;
-    height: 50px;
-    width: 100%;
-    background-color: $dark-blue;
-    color: white;
-    margin-top: 35px;
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+h1, h2, h3, p, ul, ol {
+    margin: 0;
+}
+
+ul, ol {
+    padding: 0;
+    list-style: none;
+}
+
+.wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 10px 16px;
+    z-index: 10;
+    &:focus {
+        left: 16px;
+        top: 16px;
+    }
+}
+
+// ---- Masthead ----
+.masthead {
     position: relative;
-    &:before {
+    padding: 40px 0 28px;
+    .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    &::after {
         content: "";
         position: absolute;
-        left: 2%;
-        top: 0px;
-        display: inline-block;
-        width: 20px;
-        height: 100%;
-        background-color: white;
-    }
-    h1 {
-        display: inline-block;
-        line-height: 50px;
-        margin-left: 5%;
-        text-transform: uppercase;
-        @media (max-width: 768px) {
-            margin-left: 10%;
-        }
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: min(calc(100% - 48px), calc(var(--max-width) - 48px));
+        height: 3px;
+        background-color: var(--color-accent);
     }
 }
 
-section.personal-information {
-    padding: 35px 0 20px;
+.identity {
+    flex: 1 1 320px;
     .name {
-        display: inline-block;
-        width: 100%;
-        h1 {
-            display: block;
-            font-family: "Aller-Bold";
-            font-size: 40px;
-        }
-        h2 {
-            display: block;
-            font-family: "Aller-Light";
-            font-size: 30px;
-            color: $dark-blue;
-        }
+        font-size: 34px;
+        line-height: 1.15;
     }
-    .contact {
-        .mobile,
-        .email {
-            display: inline-block;
-            width: 100%;
-            padding-left: 60px;
-            position: relative;
-            margin-top: 10px;
-            &:first-child {
-                margin-top: 0px;
-            }
-            &:before {
-                content: "";
-                position: absolute;
-                left: 0px;
-                top: 50%;
-                transform: translate3d(0, -50%, 0);
-                display: inline-block;
-                width: 40px;
-                height: 40px;
-                background-size: cover;
-            }
-            .head {
-                display: block;
-                font-size: 18px;
-                color: $dark-blue;
-            }
-            .text {
-                display: block;
-                font-size: 18px;
-                color: black;
-                a {
-                    text-decoration: none;
-                    color: black;
-                }
-            }
-        }
-        .mobile:before {
-            background-image: url("../images/phone.svg");
-        }
-        .email:before {
-            background-image: url("../images/email.svg");
-        }
-        .links {
-            display: block;
-            margin-top: 15px;
-            text-align: left;
-            span {
-                display: inline-block;
-                width: 40px;
-                height: 40px;
-                background-size: cover;
-                background-position: center;
-                margin-left: 40px;
-                border-radius: 50%;
-                a {
-                    display: inline-block;
-                    width: 100%;
-                    height: 100%;
-                }
-                &:first-child {
-                    margin-left: 0px;
-                }
-                &.linkedin {
-                    background-image: url("../images/linkedin.svg");
-                }
-                &.github {
-                    background-image: url("../images/github.svg");
-                }
-                &.stackoverflow {
-                    background-image: url("../images/stackoverflow.svg");
-                    border-radius: 0;
-                }
-                &.codepen {
-                    background-image: url("../images/codepen.svg");
-                }
-            }
+    .title {
+        margin-top: 4px;
+        font-size: 18px;
+        color: var(--color-accent);
+    }
+    .summary {
+        margin-top: 14px;
+        font-size: 15px;
+        max-width: 620px;
+    }
+}
+
+.masthead-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text);
+        font-size: 15px;
+        &:hover {
+            color: var(--color-accent);
         }
     }
 }
 
-section.experience {
-    .employment,
-    .education {
-        .positions {
-            display: block;
-            .position {
-                display: inline-block;
-                width: 100%;
-                height: auto;
-                padding: 15px 0;
-                position: relative;
-                &:last-of-type {
-                    padding-bottom: 0px;
-                }
-                &:before {
-                    content: "";
-                    position: absolute;
-                    left: -20px;
-                    top: 18px;
-                    display: inline-block;
-                    width: 12px;
-                    height: 12px;
-                    background-color: white;
-                    border: solid 1px $dark-blue;
-                    border-radius: 50%;
-                }
-                time {
-                    display: inline-block;
-                    width: 24%;
-                    vertical-align: top;
-                }
-                .wrapper {
-                    display: inline-block;
-                    width: 74%;
-                    .company,
-                    .role,
-                    .description,
-                    .school,
-                    .certificate {
-                        display: block;
-                    }
-                    .company,
-                    .certificate {
-                        margin: 0px;
-                        color: $dark-blue;
-                    }
-                    .company,
-                    .certificate {
-                        margin-bottom: 5px;
-                    }
-                    .description {
-                        margin: 0px;
-                    }
-                    .role {
-                        color: black;
-                        font-family: "Aller-Bold";
-                    }
-                }
-            }
-        }
-    }
-    .professional-skills,
-    .personal-skills {
-        .skills {
-            .skill-grade {
-                display: block;
-                text-align: right;
-                span {
-                    display: inline-block;
-                    font-size: 11px;
-                    margin-left: 5px;
-                    font-family: "Aller-Regular";
-                    &:first-child {
-                        margin-left: 0px;
-                    }
-                }
-            }
-            .skill {
-                display: block;
-                margin-top: 5px;
-                .title {
-                    display: inline-block;
-                    width: 49%;
-                }
-                .rate {
-                    display: inline-block;
-                    width: 49%;
-                    text-align: right;
-                    span {
-                        display: inline-block;
-                        width: 12px;
-                        height: 12px;
-                        border-radius: 50%;
-                        background-color: $dark-blue;
-                        &.light {
-                            background-color: $light-blue;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .projects {
-        h4 {
-            display: block;
-            color: $dark-blue;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0px;
-            a {
-                display: block;
-                margin-top: 5px;
-                text-decoration: none;
-                color: black;
-                padding-left: 30px;
-                position: relative;
-                &:before {
-                    content: "";
-                    display: inline-block;
-                    width: 50px;
-                    height: 50px;
-                    position: absolute;
-                    left: 0px;
-                    top: 50%;
-                    transform: translate3d(-30%, -30%, 0);
-                    background-size: cover;
-                    background-position: center;
-                    background-image: url("../images/link.svg");
-                }
-            }
-        }
-    }
-}
-
-h3.header {
+.icon {
     display: inline-block;
-    padding: 10px 0;
-    width: 100%;
-    border-bottom: solid 1px gray;
-    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.icon-phone { background-image: url("../images/phone.svg"); }
+.icon-email { background-image: url("../images/email.svg"); }
+.icon-linkedin { background-image: url("../images/linkedin.svg"); }
+.icon-stackoverflow { background-image: url("../images/stackoverflow.svg"); }
+
+// github.svg is a plain black silhouette with no fill of its own, so it's
+// rendered as an inline <svg fill="currentColor"> instead of a background
+// image, which lets it pick up the accent color and stay visible in both
+// light and dark mode.
+.icon-github {
+    fill: currentColor;
+}
+
+// ---- Layout ----
+main.wrap {
+    padding-top: 36px;
+    padding-bottom: 36px;
+}
+
+.section-heading {
+    font-size: 13px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    &:before {
-        content: "+";
-        color: $dark-blue;
-        position: absolute;
-        left: -15px;
-        top: 50%;
-        transform: translate3d(-50%, -50%, 0);
-        font-size: 35px;
-    }
-    &:after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        left: 0px;
-        bottom: -1px;
-        width: 10%;
-        height: 1px;
-        background-color: black;
+    color: var(--color-accent);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.group-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin: 18px 0 8px;
+    &:first-of-type {
+        margin-top: 0;
     }
 }
 
-div.left-timeline {
-    position: relative;
-    &:before {
-        content: "";
-        display: inline-block;
-        height: 100%;
-        width: 0px;
-        border-left: dotted 1px black;
-        position: absolute;
-        left: -14px;
+.placeholder {
+    font-style: italic;
+    color: var(--color-text-muted);
+    background: var(--color-accent-tint);
+    border-left: 3px dashed var(--color-accent);
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+main > section + section {
+    margin-top: 36px;
+}
+
+.link-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+// ---- Entries (experience / education) ----
+.entry-list .entry {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--color-border);
+    &:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+    @media (max-width: 520px) {
+        grid-template-columns: 1fr;
+        gap: 4px;
     }
 }
 
-footer {
-    display: inline-block;
-    width: 100%;
-    height: 40px;
-    margin-top: 100px;
-    background-color: $dark-blue;
-    @media (max-width: 768px) {
-        margin-top: 50px;
+.entry-date {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    padding-top: 2px;
+}
+
+.entry-title {
+    font-size: 17px;
+}
+
+.entry-org {
+    margin-top: 2px;
+    font-size: 14px;
+    color: var(--color-accent);
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    @media (max-width: 520px) {
+        flex-direction: column;
+        gap: 4px;
     }
+}
+
+.entry-link {
+    flex-shrink: 0;
+    padding-left: 16px;
+    border-left: 1px solid var(--color-border);
+    font-size: 13px;
+    text-align: right;
+    white-space: nowrap;
+    @media (max-width: 520px) {
+        padding-left: 0;
+        border-left: none;
+        text-align: left;
+    }
+    a {
+        display: block;
+        color: var(--color-text-muted);
+        margin-top: 2px;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:hover {
+            color: var(--color-accent);
+        }
+    }
+}
+
+.entry-description {
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--color-text);
+}
+
+.entry-body .placeholder {
+    margin-top: 8px;
+}
+
+.achievements-label {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.achievements-list {
+    margin-top: 4px;
+    padding-left: 18px;
+    list-style: disc;
+    li {
+        font-size: 15px;
+        color: var(--color-text);
+        margin-top: 4px;
+    }
+}
+
+.entry-tags {
+    margin-top: 10px;
+    .tag-list {
+        gap: 6px;
+    }
+    .tag {
+        font-size: 12px;
+        padding: 3px 10px;
+        color: var(--color-text-muted);
+    }
+}
+
+// ---- Skills ----
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.tag {
+    font-size: 13px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+// ---- Project links ----
+.link-list {
+    li {
+        padding: 4px 0;
+    }
+    a {
+        color: var(--color-text);
+        &:hover {
+            color: var(--color-accent);
+        }
+    }
+}
+
+.site-footer {
+    height: 6px;
+    width: min(calc(100% - 48px), calc(var(--max-width) - 48px));
+    margin: 0 auto;
+    background-color: var(--color-accent);
 }
 
 @media print {
-    footer {
-        margin-top: 100px;
+    .no-print {
+        display: none !important;
     }
-    .print-6 {
-        width: 50%;
+    body {
+        color: #000;
     }
-    .print-5 {
-        width: 41.66667%;
+    a {
+        color: #000;
+        text-decoration: underline;
     }
-    .print-offset-1 {
-        margin-left: 8.33333%;
+    .masthead::after {
+        background-color: #000;
     }
 }

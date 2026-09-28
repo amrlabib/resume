@@ -19,17 +19,14 @@
     font-style: normal;
 }
 
+$system-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
 body {
-    font-family: "Aller-Light", "Arial";
+    font-family: $system-font;
 }
 
-h1,
-h2,
-h3 {
-    font-family: "Aller-Light", "Arial";
-}
-
-p,
-time {
-    font-family: "Aller-Regular", "Arial";
+.name,
+.entry-title,
+.section-heading {
+    font-family: "Aller-bold", $system-font;
 }

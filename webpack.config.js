@@ -3,6 +3,7 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'docs'),
@@ -23,21 +24,16 @@ module.exports = {
       },
       {
         test: /\.(ttf|woff|woff2)$/,
-        use: {
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]',
-                outputPath: 'fonts/'
-            },
-        },
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
       },
       {
         test: /\.svg$/,
-        use: {
-            loader: 'svg-url-loader',
-            options: {
-                encoding: 'base64'
-            }
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]'
         }
       }
     ],
@@ -46,14 +42,16 @@ module.exports = {
       new CopyWebpackPlugin({
         patterns: [
           { from: './src/index.html', to: './' },
-          { from: './src/images/*', to: './' },
+          { from: './src/images/favicon', to: './favicon' },
         ]}
        ),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'docs'),
+    static: {
+      directory: path.join(__dirname, 'docs'),
+    },
     compress: true,
     port: 9000,
-    disableHostCheck: true
+    allowedHosts: 'all'
   }
 };
