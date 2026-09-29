@@ -128,6 +128,13 @@ ul, ol {
     flex-direction: column;
     gap: 4px;
     align-items: flex-start;
+    .location {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text);
+        font-size: 15px;
+    }
     a {
         display: inline-flex;
         align-items: center;
@@ -286,6 +293,10 @@ main > section + section {
     color: var(--color-text);
 }
 
+.brand {
+    color: var(--color-accent);
+}
+
 .entry-body .placeholder {
     margin-top: 8px;
 }
@@ -381,5 +392,8 @@ main > section + section {
     }
     .masthead::after {
         background-color: #000;
+    }
+    .brand {
+        color: #000;
     }
 }

@@ -43,6 +43,7 @@ module.exports = {
         patterns: [
           { from: './src/index.html', to: './' },
           { from: './src/images/favicon', to: './favicon' },
+          { from: './src/images/og-image.png', to: './og-image.png' },
         ]}
        ),
   ],
